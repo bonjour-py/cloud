@@ -1,0 +1,24 @@
+http:
+  services:
+    cloud:
+      loadBalancer:
+        servers:
+          - url: http://host.containers.internal:30400
+  middlewares:
+    cloud-wellknown:
+      redirectRegex:
+        regex: ^https://(.*)
+        replacement: https://cloud.$1
+  routers:
+    cloud-wellknown: 
+      entryPoints: 
+        - https
+      rule: Host(`bonjour.zone`) && ( PathPrefix(`/.well-known/caldav`) || PathPrefix(`/.well-known/carddav`) )
+      middlewares:
+        - cloud-wellknown
+      service: cloud
+    cloud: 
+      entryPoints: 
+        - https
+      rule: Host(`cloud.bonjour.zone`)
+      service: cloud
