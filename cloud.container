@@ -14,7 +14,6 @@ Environment = MYSQL_DATABASE=cloud
 Environment = MYSQL_USER=cloud
 Environment = MYSQL_PASSWORD=----DATABASE_PASSWORD----
 
-Environment = NEXTCLOUD_DATA_DIR=/data
 Environment = NEXTCLOUD_TRUSTED_DOMAINS=bonjour.zone
 
 Environment = MAIL_DOMAIN=bonjour.zone
