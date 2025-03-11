@@ -4,33 +4,23 @@ Description = Podman Container %N
 [Container]
 
 AutoUpdate = registry
-Image = public.ecr.aws/docker/library/nextcloud
+Image = ghcr.io/hoellen/nextcloud
 
-Environment = NEXTCLOUD_ADMIN_USER=bonjour
-Environment = NEXTCLOUD_ADMIN_PASSWORD=----ADMIN_PASSWORD----
+Environment = ADMIN_USER=bonjour
+Environment = ADMIN_PASSWORD=----ADMIN_PASSWORD----
 
-Environment = MYSQL_HOST=bonjour-bj-internal.mysql.rds.aliyuncs.com
-Environment = MYSQL_DATABASE=cloud
-Environment = MYSQL_USER=cloud
-Environment = MYSQL_PASSWORD=----DATABASE_PASSWORD----
+Environment = DB_TYPE=mysql
+Environment = DB_HOST=bonjour-bj-internal.mysql.rds.aliyuncs.com
+Environment = DB_NAME=cloud
+Environment = DB_USER=cloud
+Environment = DB_PASSWORD=----DATABASE_PASSWORD----
 
-Environment = NEXTCLOUD_TRUSTED_DOMAINS=bonjour.zone
+PublishPort = 30400:8888
 
-Environment = MAIL_DOMAIN=bonjour.zone
-Environment = MAIL_FROM_ADDRESS=cloud
-Environment = SMTP_HOST=smtp.qiye.aliyun.com
-Environment = SMTP_SECURE=ssl
-Environment = SMTP_NAME=bot@bonjour.zone
-Environment = SMTP_PASSWORD=----SMTP_PASSWORD----
-
-Environment = OVERWRITEHOST=cloud.bonjour.zone
-Environment = OVERWRITEPROTOCOL=https
-Environment = OVERWRITECLIURL=https://cloud.bonjour.zone
-Environment = OVERWRITEWEBROOT=/
-
-PublishPort = 30400:80
-
-Volume = cloud.volume:/var/www/html
+Volume = cloud-data.volume:/data
+Volume = cloud-config.volume:/nextcloud/config
+Volume = cloud-apps.volume:/nextcloud/apps2
+Volume = cloud-themes.volume:/nextcloud/themes
 
 [Service]
 Restart = on-failure

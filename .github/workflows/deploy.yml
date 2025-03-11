@@ -28,8 +28,6 @@ jobs:
         run: echo '${{ secrets.ALIYUN_OSS }}' >> secrets/aliyun_oss; chmod u=rw,go= secrets/aliyun_oss
       - name: Configure service ADMIN_PASSWORD
         run: sed -i 's%----ADMIN_PASSWORD----%${{ secrets.ADMIN_PASSWORD }}%g' cloud.container
-      - name: Configure service SMTP_PASSWORD
-        run: sed -i 's%----SMTP_PASSWORD----%${{ secrets.SMTP_PASSWORD }}%g' cloud.container
       - name: Configure service DATABASE_PASSWORD
         run: sed -i 's%----DATABASE_PASSWORD----%${{ secrets.DATABASE_PASSWORD }}%g' cloud.container
       - name: Configure service proxy
@@ -41,6 +39,6 @@ jobs:
       - name: load service
         run: ssh service@${{ matrix.host }} systemctl --user daemon-reload
       - name: start service
-        run: ssh service@${{ matrix.host }} systemctl --user restart cloud-volume cloud
+        run: ssh service@${{ matrix.host }} systemctl --user restart cloud-data-volume cloud-config-volume cloud-apps-volume cloud-themes-volume cloud
       - name: start service proxy
         run: ssh service@${{ matrix.host }} systemctl --user restart proxy

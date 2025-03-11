@@ -5,7 +5,7 @@ Description = Podman Volume %N
 
 Options = _netdev,allow_other,use_cache=%C/s3fs,del_cache,passwd_file=%E/containers/systemd/cloud/secrets/aliyun_oss,url=https://oss-cn-beijing-internal.aliyuncs.com
 Type = fuse.s3fs
-Device = bonjour-zone-cloud
+Device = bonjour-zone-cloud:/data
 
 [Install]
 WantedBy = default.target
