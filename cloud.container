@@ -6,6 +6,8 @@ Description = Podman Container %N
 AutoUpdate = registry
 Image = ghcr.io/hoellen/nextcloud
 
+Environment = DOMAIN=cloud.bonjour.zone
+
 Environment = ADMIN_USER=bonjour
 Environment = ADMIN_PASSWORD=----ADMIN_PASSWORD----
 
