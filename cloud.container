@@ -29,7 +29,7 @@ Environment = OVERWRITEPROTOCOL=https
 Environment = OVERWRITECLIURL=https://cloud.bonjour.zone
 Environment = OVERWRITEWEBROOT=/
 
-PublishPort = 30400:9000
+PublishPort = 30400:80
 
 Volume = cloud.volume:/var/www/html
 
