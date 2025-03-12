@@ -13,7 +13,7 @@ http:
     cloud-wellknown: 
       entryPoints: 
         - https
-      rule: Host(`bonjour.zone`) && ( PathPrefix(`/.well-known/caldav`) || PathPrefix(`/.well-known/carddav`) ||  PathPrefix(`/remote.php/dav`) )
+      rule: Host(`bonjour.zone`) && ( PathPrefix(`/.well-known/caldav`) || PathPrefix(`/.well-known/carddav`) ||  PathPrefix(`/remote.php`) )
       middlewares:
         - cloud-wellknown
       service: cloud
