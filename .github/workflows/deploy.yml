@@ -27,9 +27,9 @@ jobs:
       - name: Configure secrets ALIYUN_OSS
         run: echo '${{ secrets.ALIYUN_OSS }}' >> secrets/aliyun_oss; chmod u=rw,go= secrets/aliyun_oss
       - name: Configure service ADMIN_PASSWORD
-        run: sed -i 's%----ADMIN_PASSWORD----%${{ secrets.ADMIN_PASSWORD }}%g' cloud.container
+        run: sed -i 's%----ADMIN_PASSWORD----%${{ secrets.ADMIN_PASSWORD }}%g' cloud-nextcloud.container
       - name: Configure service DATABASE_PASSWORD
-        run: sed -i 's%----DATABASE_PASSWORD----%${{ secrets.DATABASE_PASSWORD }}%g' cloud.container
+        run: sed -i 's%----DATABASE_PASSWORD----%${{ secrets.DATABASE_PASSWORD }}%g' cloud-nextcloud.container
       - name: Configure service proxy
         run: mkdir proxy.container.d; mv proxy.conf proxy.container.d/cloud.conf
       - name: Make service directory
@@ -39,6 +39,6 @@ jobs:
       - name: load service
         run: ssh service@${{ matrix.host }} systemctl --user daemon-reload
       - name: start service
-        run: ssh service@${{ matrix.host }} systemctl --user restart cloud.service
+        run: ssh service@${{ matrix.host }} systemctl --user restart cloud
       - name: start service proxy
         run: ssh service@${{ matrix.host }} systemctl --user restart proxy
