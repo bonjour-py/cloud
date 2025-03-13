@@ -9,7 +9,6 @@ PublishPort = 30400:8888
 Volume = cloud-data.volume:/data
 Volume = cloud-config.volume:/nextcloud/config
 Volume = cloud-apps.volume:/nextcloud/apps2
-Volume = cloud-themes.volume:/nextcloud/themes
 
 [Service]
 Restart = on-failure

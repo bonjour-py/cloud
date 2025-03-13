@@ -15,5 +15,8 @@ Environment = DB_NAME=cloud
 Environment = DB_USER=cloud
 Environment = DB_PASSWORD=----DATABASE_PASSWORD----
 
+SecurityLabelDisable = true
+Volume = ./themes:/nextcloud/themes:ro
+
 [Service]
 Restart = on-failure
