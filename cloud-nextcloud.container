@@ -1,7 +1,5 @@
-[Unit]
-Description = Podman Container %N
-
 [Container]
+Pod = cloud.pod
 
 AutoUpdate = registry
 Image = ghcr.io/hoellen/nextcloud
@@ -17,15 +15,5 @@ Environment = DB_NAME=cloud
 Environment = DB_USER=cloud
 Environment = DB_PASSWORD=----DATABASE_PASSWORD----
 
-PublishPort = 30400:8888
-
-Volume = cloud-data.volume:/data
-Volume = cloud-config.volume:/nextcloud/config
-Volume = cloud-apps.volume:/nextcloud/apps2
-Volume = cloud-themes.volume:/nextcloud/themes
-
 [Service]
 Restart = on-failure
-
-[Install]
-WantedBy = default.target

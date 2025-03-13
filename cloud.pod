@@ -1,0 +1,18 @@
+[Unit]
+Description = Podman Service %N
+
+[Pod]
+ServiceName = cloud
+
+PublishPort = 30400:8888
+
+Volume = cloud-data.volume:/data
+Volume = cloud-config.volume:/nextcloud/config
+Volume = cloud-apps.volume:/nextcloud/apps2
+Volume = cloud-themes.volume:/nextcloud/themes
+
+[Service]
+Restart = on-failure
+
+[Install]
+WantedBy = default.target
