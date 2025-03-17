@@ -1,5 +1,5 @@
 [Unit]
-Description = Podman Container %N
+Description = Podman Service %N
 
 [Container]
 
@@ -19,10 +19,11 @@ Environment = DB_PASSWORD=----DATABASE_PASSWORD----
 
 PublishPort = 30400:8888
 
+SecurityLabelDisable = true
+Volume = ./themes:/nextcloud/themes
 Volume = cloud-data.volume:/data
 Volume = cloud-config.volume:/nextcloud/config
 Volume = cloud-apps.volume:/nextcloud/apps2
-Volume = cloud-themes.volume:/nextcloud/themes
 
 [Service]
 Restart = on-failure

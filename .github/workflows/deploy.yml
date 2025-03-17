@@ -39,6 +39,6 @@ jobs:
       - name: load service
         run: ssh service@${{ matrix.host }} systemctl --user daemon-reload
       - name: start service
-        run: ssh service@${{ matrix.host }} systemctl --user restart cloud-data-volume cloud-config-volume cloud-apps-volume cloud-themes-volume cloud
+        run: ssh service@${{ matrix.host }} systemctl --user restart cloud
       - name: start service proxy
         run: ssh service@${{ matrix.host }} systemctl --user restart proxy
